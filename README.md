@@ -1,53 +1,49 @@
-# Heroku Django Starter Template
+# Python開発者のためのHeroku入門
 
-An utterly fantastic project starter template for Django 1.10.
+## セミナー概要
 
-## Features
+開発したアプリケーションを迅速に提供できるインフラは常に求められています。
+クラウドによって仮想環境の調達は容易になりましたが、アプリケーションを動かすためのミドルウェアやデータベースの設計、導入には依然として時間がかかります。
+Herokuでは、必要なミドルウェアは自動的に判断され、データベースはワンクリックで作成できるため、開発したアプリケーションをいますぐに公開することが可能です。
 
-- Production-ready configuration for Static Files, Database Settings, Gunicorn, etc.
-- Enhancements to Django's static file serving functionality via WhiteNoise.
-- Latest Python 3.6 runtime environment. 
+本Webセミナーでは、Python開発者の方々を対象に、Django でのHerokuへのデプロイ方法を、デモを交えてご説明します。
+アプリケーションをいますぐに公開する手順を知りたいPython開発者の方は、ぜひご参加ください。
 
-## How to Use
+## 当Githubサイトのご案内
 
-To use this project, follow these steps:
+Webセミナー内で使用したサンプルプログラムを公開しています。
 
-1. Create your working environment.
-2. Install Django (`$ pip install django`)
-3. Create a new project using this template
+## 使い方
 
-## Creating Your Project
+### 前提条件
 
-Using this template to create a new Django app is easy::
+1. ローカル環境で、Python 2.7.x または、Python 3.6.x 以上が稼働すること
+2. `git` コマンドが利用可能なこと
+2. Pip が利用可能なこと
+3. Django が利用可能な環境であること
+4. Heroku アカウントを有しており、かつ [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)が導入され、利用可能なこと
+5. ローカルでの開発や試行には、PostgreSQLが稼働している必要がある場合があります
 
-    $ django-admin.py startproject --template=https://github.com/heroku/heroku-django-template/archive/master.zip --name=Procfile helloworld
+### 利用手順(CLIのケース)
 
-(If this doesn't work on windows, replace `django-admin.py` with `django-admin`)
+1. 事前に Heroku login を済ませておくこと
+2. `git clone https://github.com/tabesfdc/heroku_python_0419.git` を実行する
+3. `cd heroku_Python_0124` により、カレントディレクトリを変更する
+4. `heroku login` にて、Heroku へログインを済ませる
+5. `heroku create` により、Heroku へ新たにアプリのデプロイ環境を作成する
+6. `heroku addons:create heroku-postgresql:hobby-dev` を実行し、Heroku Postgres を利用できるようにする
+7. `git push heroku master` で、作成した Heroku へアプリケーションをデプロイ
+8. `heroku open` でデプロイしたアプリケーションの稼働確認ができます
+9. ログを確認する場合には `heroku logs` を利用ください
 
-You can replace ``helloworld`` with your desired project name.
+## もっとかんたんな使い方
 
-## Deployment to Heroku
+### Heroku buttonを使おう
 
-    $ git init
-    $ git add -A
-    $ git commit -m "Initial commit"
-
-    $ heroku create
-    $ git push heroku master
-
-    $ heroku run python manage.py migrate
-
-See also, a [ready-made application](https://github.com/heroku/python-getting-started), ready to deploy.
-
-## Using Python 2.7?
-
-Just update `runtime.txt` to `python-2.7.13` (no trailing spaces or newlines!).
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-## License: MIT
+# 注意事項
 
-## Further Reading
-
-- [Gunicorn](https://warehouse.python.org/project/gunicorn/)
-- [WhiteNoise](https://warehouse.python.org/project/whitenoise/)
-- [dj-database-url](https://warehouse.python.org/project/dj-database-url/)
+- Windowsの場合、諸々制限があり、実行できない可能性があります。
+- そもそも Macでしか実行確認をしていません
